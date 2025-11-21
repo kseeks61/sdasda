@@ -11,7 +11,7 @@ jobs:
     runs-on: windows-latest
 
     steps:
-    - name: Checkout repo
+    - name: Checkout repository
       uses: actions/checkout@v3
 
     - name: Set up Python
@@ -22,7 +22,8 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install pyinstaller pandas rapidfuzz psutil openpyxl
+        pip install -r requirements.txt
+        pip install pyinstaller
 
     - name: Build EXE
       run: |
@@ -31,5 +32,5 @@ jobs:
     - name: Upload EXE artifact
       uses: actions/upload-artifact@v4
       with:
-        name: AO_Search
+        name: AO_Search-exe
         path: dist/AO_Search.exe
